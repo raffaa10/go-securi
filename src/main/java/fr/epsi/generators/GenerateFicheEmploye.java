@@ -11,9 +11,11 @@ import java.util.List;
 public class GenerateFicheEmploye {
 
     public static void generateHtmlFileEmploye(String nom) throws IOException {
+
         String filePath = String.format("src/main/resources/HTML/fiche_employe_%s.html", nom);
 
         List<String> listAgent;
+
 
         File htmlSortant = new File(filePath);
         FileWriter htmlWriter = new FileWriter(htmlSortant);
@@ -60,6 +62,8 @@ public class GenerateFicheEmploye {
             htmlWriter.write("\n");
             htmlWriter.write("<h1>Fiche employe");
             htmlWriter.write("</h1>");
+            htmlWriter.write("\n");
+            htmlWriter.write("<img src='../txt/" + nom + "/" + nom + ".png' alt='Id'>");
             htmlWriter.write("\n");
             htmlWriter.write("<p class='texte'>" + listAgent.get(1) + " " + listAgent.get(0) + "</p>");
             htmlWriter.write("\n");
