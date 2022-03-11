@@ -1,7 +1,7 @@
 package fr.epsi;
 
 import fr.epsi.generators.GenerateAccueil;
-import fr.epsi.generators.GenerateFicheEmploye;
+import fr.epsi.tools.MyThread;
 import fr.epsi.tools.Parsing;
 
 import java.util.List;
@@ -12,9 +12,9 @@ public class Main {
 
         List<String> listEmployes = Parsing.StaffParsing();
 
-        for (int i = 0; i < listEmployes.size(); i++) {
-            GenerateFicheEmploye.generateHtmlFileEmploye(listEmployes.get(i));
-        }
+        Runnable runnable = new MyThread();
+        Thread thread = new Thread(runnable);
+        thread.start();
 
         GenerateAccueil.generateHtmlFileAccueil();
     }
