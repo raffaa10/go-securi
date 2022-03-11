@@ -10,21 +10,20 @@ import java.util.List;
 
 public class GenerateFicheEmploye {
 
-    public static void generateHtmlFileEmploye(String nom) {
+    public static void generateHtmlFileEmploye(String nom) throws IOException {
         String filePath = String.format("src/main/resources/HTML/fiche_employe_%s.html", nom);
 
-        List<String> listAgent = null;
-        FileWriter htmlWriter = null;
+        List<String> listAgent;
+
+        File htmlSortant = new File(filePath);
+        FileWriter htmlWriter = new FileWriter(htmlSortant);
+
         try {
             listAgent = Parsing.personalParsing(nom);
             Parsing.listeParsing();
             ArrayList<String> matosIsChecked = Parsing.compareMatos(nom);
 
-            File htmlSortant = new File(filePath);
-
             htmlSortant.getParentFile().mkdirs();
-
-            htmlWriter = new FileWriter(htmlSortant);
 
             htmlWriter.write("<html>");
             htmlWriter.write("\n");
@@ -91,11 +90,7 @@ public class GenerateFicheEmploye {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                htmlWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            htmlWriter.close();
         }
     }
 }

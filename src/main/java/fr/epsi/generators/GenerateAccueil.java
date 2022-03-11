@@ -9,18 +9,17 @@ import java.util.List;
 
 public class GenerateAccueil {
 
-    public static void generateHtmlFileAccueil() {
+    public static void generateHtmlFileAccueil() throws IOException {
 
         List<String> listEmployes;
-        FileWriter htmlWriter = null;
+
+        File htmlSortant = new File("src/main/resources/index.html");
+        FileWriter htmlWriter = new FileWriter(htmlSortant);
+
         try {
             listEmployes = Parsing.StaffParsing();
-            File htmlSortant = new File("src/main/resources/index.html");
 
             htmlSortant.getParentFile().mkdirs();
-
-            htmlWriter = new FileWriter(htmlSortant);
-
 
             htmlWriter.write("<html>");
             htmlWriter.write("\n");
@@ -80,11 +79,7 @@ public class GenerateAccueil {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                htmlWriter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            htmlWriter.close();
         }
     }
 }
