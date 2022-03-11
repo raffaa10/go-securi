@@ -10,7 +10,7 @@ public class Parsing {
 
     public static ArrayList<String> StaffParsing() throws IOException {
         FileReader fileReader = null;
-        BufferedReader read;
+        BufferedReader read = null;
 
         File file = new File("src/main/resources/txt/staff.txt");
 
@@ -22,10 +22,10 @@ public class Parsing {
             while ((line = read.readLine()) != null) {
                 listEmployes.add(line);
             }
-            read.close();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            read.close();
             fileReader.close();
         }
         return listEmployes;
@@ -36,7 +36,7 @@ public class Parsing {
 
     public static void listeParsing() throws IOException {
         FileReader fileReader = null;
-        BufferedReader read;
+        BufferedReader read = null;
 
         File file = new File("src/main/resources/txt/liste.txt");
 
@@ -55,6 +55,7 @@ public class Parsing {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            read.close();
             fileReader.close();
         }
     }
