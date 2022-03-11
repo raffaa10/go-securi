@@ -8,7 +8,7 @@ public class Parsing {
 
     public static final ArrayList<String> listEmployes = new ArrayList<>();
 
-    public static ArrayList<String> StaffParsing() throws IOException {
+    public static ArrayList<String> StaffParsing() {
         FileReader fileReader = null;
         BufferedReader read = null;
 
@@ -25,8 +25,12 @@ public class Parsing {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            read.close();
-            fileReader.close();
+            try {
+                read.close();
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return listEmployes;
     }
@@ -34,7 +38,7 @@ public class Parsing {
     public static final List<String> stuffLabel = new ArrayList<>();
     public static final List<String> stuffCode = new ArrayList<>();
 
-    public static void listeParsing() throws IOException {
+    public static void listeParsing() {
         FileReader fileReader = null;
         BufferedReader read = null;
 
@@ -55,14 +59,18 @@ public class Parsing {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            read.close();
-            fileReader.close();
+            try {
+                read.close();
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public static List<String> personalParsing(String nom) {
-        FileReader fileReader;
-        BufferedReader read;
+        FileReader fileReader = null;
+        BufferedReader read = null;
 
         List<String> listAgent = new ArrayList<>();
 
@@ -80,11 +88,18 @@ public class Parsing {
             read.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                read.close();
+                fileReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return listAgent;
     }
 
-    public static List<String> getInfo(String nom) throws Exception {
+    public static List<String> getInfo(String nom) {
         List<String> listeAgent = personalParsing(nom);
 
         int index = 0;
@@ -96,7 +111,7 @@ public class Parsing {
 
     public static final ArrayList<String> isChecked = new ArrayList<>();
 
-    public static ArrayList<String> compareMatos(String nom) throws Exception {
+    public static ArrayList<String> compareMatos(String nom) {
         List<String> matosAgent = getInfo(nom);
         List<String> allMatos = stuffCode;
         String isStringChecked = "checked";
