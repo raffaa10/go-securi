@@ -10,7 +10,7 @@ public class Parsing {
 
     public static ArrayList<String> StaffParsing() throws IOException {
         FileReader fileReader = null;
-        BufferedReader read = null;
+        BufferedReader read;
 
         File file = new File("src/main/resources/txt/staff.txt");
 
@@ -36,7 +36,7 @@ public class Parsing {
 
     public static void listeParsing() throws IOException {
         FileReader fileReader = null;
-        BufferedReader read = null;
+        BufferedReader read;
 
         File file = new File("src/main/resources/txt/liste.txt");
 
