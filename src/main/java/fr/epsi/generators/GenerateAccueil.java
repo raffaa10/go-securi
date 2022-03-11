@@ -11,7 +11,7 @@ public class GenerateAccueil {
 
     public static void generateHtmlFileAccueil() {
 
-        List<String> listEmployes = null;
+        List<String> listEmployes;
         FileWriter htmlWriter = null;
         try {
             listEmployes = Parsing.StaffParsing();

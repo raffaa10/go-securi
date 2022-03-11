@@ -8,70 +8,74 @@ public class Parsing {
 
     public static final ArrayList<String> listEmployes = new ArrayList<>();
 
+    public static ArrayList<String> StaffParsing() {
+        FileReader fileReader;
+        BufferedReader read;
 
-
-    public static ArrayList<String> StaffParsing() throws IOException {
-
-        FileReader staff = null;
-        BufferedReader read = null;
         File file = new File("src/main/resources/txt/staff.txt");
 
         try {
-            staff = new FileReader(file);
-            read = new BufferedReader(staff);
+            fileReader = new FileReader(file);
+            read = new BufferedReader(fileReader);
             String line;
             listEmployes.clear();
-            while ((line = read.readLine()) != null){
+            while ((line = read.readLine()) != null) {
                 listEmployes.add(line);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            read.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            read.close();
         }
-
         return listEmployes;
     }
 
     public static final List<String> stuffLabel = new ArrayList<>();
     public static final List<String> stuffCode = new ArrayList<>();
 
-    public static void listeParsing() throws Exception {
+    public static void listeParsing() {
+        FileReader fileReader;
+        BufferedReader read;
+
         File file = new File("src/main/resources/txt/liste.txt");
-        FileReader stuff = new FileReader(file);
 
-        BufferedReader read = new BufferedReader(stuff);
-
-        String line;
-        stuffLabel.clear();
-        stuffCode.clear();
-        while ((line = read.readLine()) != null){
-            String[] tabl = line.split("    ");
-            stuffCode.add(tabl[0]);
-            stuffLabel.add(tabl[1]);
+        try {
+            fileReader = new FileReader(file);
+            read = new BufferedReader(fileReader);
+            String line;
+            stuffLabel.clear();
+            stuffCode.clear();
+            while ((line = read.readLine()) != null){
+                String[] tabl = line.split("    ");
+                stuffCode.add(tabl[0]);
+                stuffLabel.add(tabl[1]);
+            }
+            read.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        read.close();
-
     }
 
-    public static List<String> personalParsing(String nom) throws Exception {
+    public static List<String> personalParsing(String nom) {
+        FileReader fileReader;
+        BufferedReader read;
 
         List<String> listAgent = new ArrayList<>();
 
         File file = new File("src/main/resources/txt/" + nom  + "/" + nom + ".txt");
-        FileReader agent = new FileReader(file);
-        BufferedReader read = new BufferedReader(agent);
 
+        try {
+            fileReader = new FileReader(file);
+            read = new BufferedReader(fileReader);
 
-        String line;
-        listAgent.clear();
-        while ((line = read.readLine()) != null){
-            listAgent.add(line);
+            String line;
+            listAgent.clear();
+            while ((line = read.readLine()) != null){
+                listAgent.add(line);
+            }
+            read.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        read.close();
         return listAgent;
     }
 
