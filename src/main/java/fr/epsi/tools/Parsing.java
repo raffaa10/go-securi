@@ -8,9 +8,9 @@ public class Parsing {
 
     public static final ArrayList<String> listEmployes = new ArrayList<>();
 
-    public static ArrayList<String> StaffParsing() {
-        FileReader fileReader;
-        BufferedReader read;
+    public static ArrayList<String> StaffParsing() throws IOException {
+        FileReader fileReader = null;
+        BufferedReader read = null;
 
         File file = new File("src/main/resources/txt/staff.txt");
 
@@ -25,6 +25,8 @@ public class Parsing {
             read.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            fileReader.close();
         }
         return listEmployes;
     }
@@ -32,9 +34,9 @@ public class Parsing {
     public static final List<String> stuffLabel = new ArrayList<>();
     public static final List<String> stuffCode = new ArrayList<>();
 
-    public static void listeParsing() {
-        FileReader fileReader;
-        BufferedReader read;
+    public static void listeParsing() throws IOException {
+        FileReader fileReader = null;
+        BufferedReader read = null;
 
         File file = new File("src/main/resources/txt/liste.txt");
 
@@ -52,6 +54,8 @@ public class Parsing {
             read.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            fileReader.close();
         }
     }
 
