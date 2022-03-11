@@ -63,7 +63,7 @@ public class GenerateFicheEmploye {
             htmlWriter.write("<h1>Fiche employe");
             htmlWriter.write("</h1>");
             htmlWriter.write("\n");
-            htmlWriter.write("<img src='../txt/" + nom + "/" + nom + ".png' alt='Id'>");
+            htmlWriter.write("<img src='../assets/" + nom + ".png' alt='Id'>");
             htmlWriter.write("\n");
             htmlWriter.write("<p class='texte'>" + listAgent.get(1) + " " + listAgent.get(0) + "</p>");
             htmlWriter.write("\n");
